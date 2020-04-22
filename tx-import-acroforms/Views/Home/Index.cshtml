@@ -1,0 +1,45 @@
+﻿@model List<tx_import_acroforms.Models.Customer>
+
+@{
+    ViewBag.Title = "Select Customer";
+}
+
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Firstname</th>
+            <th scope="col">Street</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Postalcode</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Tax</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (tx_import_acroforms.Models.Customer customer in Model)
+        {
+            <tr>
+                <th scope="row">@customer.Id</th>
+                <td>@customer.Name</td>
+                <td>@customer.Firstname</td>
+                <td>@customer.Street</td>
+                <td>@customer.City</td>
+                <td>@customer.State</td>
+                <td>@customer.Postalcode</td>
+                <td>@customer.DOB</td>
+                <td>@customer.Tax</td>
+                <td>
+                    <form method="post" action="~/Home/GenerateForm">
+                        <input name="Id" hidden value="@customer.Id" />
+                        <input type="submit" value="Download Form" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
